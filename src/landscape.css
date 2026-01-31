@@ -1,0 +1,181 @@
+* {
+  font-family: "Zalando Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  font-size: min(1.5vw,1.5vh);
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 0%;
+  margin: 0%;
+  background-color: white;
+  background-image: url("https://imagescdn.homes.com/i2/KiwBy6QH5dMZJo-tntj7-w9_E8bM_oRDZpa9PowcMOE/117/meridian-high-school-falls-church-va-primaryphoto.jpg?p=1");
+  background-size: cover;
+  backdrop-filter: blur(20px);
+  animation: blurIn ease-in-out 1s;
+}
+
+@keyframes blurIn {
+  from {
+    backdrop-filter: blur(40px);
+  }
+  to {
+    backdrop-filter: blur(20px);
+  }
+}
+
+@keyframes transparentIn {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#interact {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  gap: min(2vw, 2vh);
+  align-items: center;
+  animation: transparentIn ease-in-out 1.5s;
+}
+
+#submit, #download {
+  width: 20%;
+  padding: min(1.25vw, 1.25vh);
+  border: none;
+  border-radius: min(1.25vw, 1.25vh);
+  box-shadow: 0px 0px 10px hsla(0, 0%, 0%, 0.3);
+  background-color: #fff;
+}
+
+#submit:hover, #download:hover {
+  background-color: #eee;
+}
+
+#submit:disabled, #download:disabled {
+  background-color: #fff;
+}
+
+#floating {
+  display: flex;
+  flex-direction: column;
+  height: min(75vw, 75vh);
+  width: min(75vw, 75vh);
+  background: #fff;
+  border-radius: min(2.5vw, 2.5vh);
+  box-shadow: 0px 0px 40px hsla(0, 0%, 0%, 0.3);
+  overflow: hidden;
+}
+
+.inset {
+  min-width: min(2.5vw, 2.5vh);
+  max-width: min(2.5vw, 2.5vh);
+  height: 100%;
+}
+
+.statBox {
+  display: flex;
+  flex-direction: column;
+  padding: min(0.75vw, 0.75vh);
+  justify-content: center;
+  align-items: center;
+}
+
+.outerbox {
+  display: flex;
+  flex-direction: column;
+  padding: min(1.5vw, 1.5vh);
+  justify-content: center;
+  align-items: center;
+  border-radius: min(1.25vw, 1.25vh);
+  background: white;
+}
+
+.labelBox {
+  width: min(7.5vw, 7.5vh);
+  flex-direction: row;
+  justify-content: left;
+}
+
+.area {
+  padding: min(2.5vw, 2.5vh);
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.area:nth-child(even) {
+  background-color: #eee;
+}
+
+.area:last-child {
+  flex-grow: 1;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: min(2vw,2vh)
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.numberBox {
+  width: 25%;
+  text-align: center;
+  
+}
+
+#notes {
+  width: 100%;
+  text-align: left;
+  padding: min(1.5vw, 1.5vh);
+  border: none;
+  border-radius: min(1.25vw, 1.25vh);
+  resize: none;
+}
+
+.baseInput {
+  text-align: center;
+  border: none;
+  border-radius: min(1.25vw, 1.25vh);
+}
+
+.baseInput:focus-visible {
+  outline: none;
+}
+
+#notes:focus-visible {
+  border: none;
+  border-radius: min(1.25vw, 1.25vh);
+  outline: none;
+}

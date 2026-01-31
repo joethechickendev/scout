@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head displayType="landscape">
+    <base target="_top">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="../src/landscape.css" rel="stylesheet">
+
+    <title>FRC Rebuilt Scouting</title>
+    <meta name="description" content="Scouting interface for the 2025/26 FRC Season">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="inset"></div>
+    <div id="interact">
+      <div class="outerbox">
+        <h2 style="margin: 0px;">2025/26 FRC Rebuilt Scouting</h2>
+      </div>
+      <div id="floating">
+        <div id="header" class="area">
+          <div class="statBox">
+            <h2 style="margin: 0px;">Team Number</h2>
+            <input id="team" type="text" placeholder="Team #" class="baseInput">
+          </div>
+          <div class="statBox" title="Found in the url of the competition link at www.thebluealliance/...">
+            <h2 style="margin: 0px;">Competition ID</h2>
+            <input id="comp" type="text" placeholder="..." class="baseInput">
+          </div>
+          <div class="statBox">
+            <h2 style="margin: 0px;">Match Number</h2>
+            <input id="match" type="text" placeholder="Match #" class="baseInput">
+          </div>
+        </div>
+        <div id="auto" class="area">
+          <div class="statBox labelBox"><h2>Auto</h2></div>
+          <div class="statBox">
+            <h2>Fuel Scored</h1>
+            <div class="input">
+              <button onclick="ibutton(-1,`fuelAuto`)">-</button>
+              <input id="fuelAuto" placeholder="0" type="number" class="numberBox">
+              <button onclick="ibutton(1,`fuelAuto`)">+</button>
+            </div>
+          </div>
+          <div class="statBox">
+            <h2>Fuel Delivered to Depot</h1>
+            <div class="input">
+              <button onclick="ibutton(-1,`depotAuto`)">-</button>
+              <input id="depotAuto" placeholder="0" type="number" class="numberBox">
+              <button onclick="ibutton(1,`depotAuto`)">+</button>
+            </div>
+          </div>
+          <div class="statBox">
+            <h2>Climb</h1>
+              <div class="input">
+                <select id="climbAuto">
+                  <option value="0">N/A</option>
+                  <option value="1">L1</option>
+                </select>
+              </div>
+          </div>
+        </div>
+        <div id="teleop" class="area">
+          <div class="statBox labelBox"><h2>Teleop</h2></div>
+          <div class="statBox">
+            <h2>Fuel Scored</h1>
+            <div class="input">
+              <button onclick="ibutton(-1,`fuelTele`)">-</button>
+              <input id="fuelTele" placeholder="0" type="number" class="numberBox">
+              <button onclick="ibutton(1,`fuelTele`)">+</button>
+            </div>
+          </div>
+          <div class="statBox">
+            <h2>Fuel Delivered to Depot</h1>
+            <div class="input">
+              <button onclick="ibutton(-1,`depotTele`)">-</button>
+              <input id="depotTele" placeholder="0" type="number" class="numberBox">
+              <button onclick="ibutton(1,`depotTele`)">+</button>
+            </div>
+          </div>
+          <div class="statBox">
+            <h2>Climb</h1>
+            <div class="input">
+              <select id="climbTele">
+                <option value="0">N/A</option>
+                <option value="1">L1</option>
+                <option value="2">L2</option>
+                <option value="3">L3</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="area">
+          <textarea id="notes" placeholder="Notes on performance..."></textarea>
+        </div>
+      </div>
+      <button id="submit" onclick="appendData()">Submit</button>
+      <button id="download" onclick="download()">Download</button>
+    </div>
+    <div class="inset"></div>
+  </body>
+  <script src="../src/main.js"></script>
+</html>
