@@ -138,12 +138,12 @@ const checkForFlip = setInterval(function() {
   if(document.head.getAttribute("displayType") == "landscape") {
     if (window.screen.width < window.screen.height) {
       saveForm();
-      location.href = "../m/rebuilt.html";
+      location.href = "../m/rebuilt";
     }
   } else {
     if (window.screen.width > window.screen.height) {
       saveForm();
-      location.href = "../c/rebuilt.html";
+      location.href = "../c/rebuilt";
     }
   }
 }, 50);
