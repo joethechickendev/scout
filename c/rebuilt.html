@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="../src/style.css" rel="stylesheet">
     <link href="../src/landscape.css" rel="stylesheet">
 
     <title>FRC Rebuilt Scouting</title>
@@ -22,11 +23,11 @@
         <div id="header" class="area">
           <div class="statBox">
             <h2 style="margin: 0px;">Team Number</h2>
-            <input id="team" type="text" placeholder="Team #" class="baseInput">
+            <select id="team"></select>
           </div>
           <div class="statBox" title="Found in the url of the competition link at www.thebluealliance/...">
             <h2 style="margin: 0px;">Competition ID</h2>
-            <input id="comp" type="text" placeholder="..." class="baseInput">
+            <select id="comp" onchange="updateTeamList()"></select>
           </div>
           <div class="statBox">
             <h2 style="margin: 0px;">Match Number</h2>
