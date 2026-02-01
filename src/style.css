@@ -26,10 +26,10 @@ body {
   padding: 0%;
   margin: 0%;
   background-color: white;
-  background-image: url("https://imagescdn.homes.com/i2/KiwBy6QH5dMZJo-tntj7-w9_E8bM_oRDZpa9PowcMOE/117/meridian-high-school-falls-church-va-primaryphoto.jpg?p=1");
+  background-image: url("../src/bg.jpeg");
   background-size: cover;
-  backdrop-filter: blur(20px);
-  animation: blurIn ease-in-out 1s;
+  backdrop-filter: blur(25px);
+  animation: panorama infinite linear 6000s;
 }
 
 @keyframes blurIn {
@@ -49,7 +49,16 @@ body {
     opacity: 0;
   }
   100% {
-    opacity: 1;
+    opacity: 0.95;
+  }
+}
+
+@keyframes panorama {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 10000%;
   }
 }
 
@@ -61,6 +70,7 @@ body {
   gap: min(2vw, 2vh);
   align-items: center;
   animation: transparentIn ease-in-out 1.5s;
+  opacity: 0.95;
 }
 
 #floating {
