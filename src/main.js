@@ -1,85 +1,10 @@
+const key = atob("b1pETkE4YjVpNjVwYVhpRHBmOHNhaFpJWU53OWx3TksxVjFrQ1k0MURQR05PNHJoaVVHMURHMXhRbVJsM3o2QQk=");
+
 const compList = [
-  {
-    name: "2026mdpas",
-    teams: [
-      "10679",
-      "1111",
-      "11350",
-      "11489",
-      "1418",
-      "1629",
-      "1719",
-      "2199",
-      "2421",
-      "2537",
-      "2849",
-      "2900",
-      "3748",
-      "4464",
-      "4505",
-      "4541",
-      "4821",
-      "5115",
-      "5830",
-      "5841",
-      "614",
-      "623",
-      "6239",
-      "6326",
-      "686",
-      "6863",
-      "7770",
-      "7886",
-      "836",
-      "8590",
-      "8622",
-      "8726",
-      "888",
-      "9033",
-      "9072"
-    ]
-  },
-  {
-    name: "2026mdsev",
-    teams: [
-      "10449",
-      "10679",
-      "1111",
-      "11211",
-      "11318",
-      "11350",
-      "1389",
-      "1418",
-      "1446",
-      "1629",
-      "1719",
-      "1727",
-      "1915",
-      "2199",
-      "2377",
-      "2534",
-      "2849",
-      "2912",
-      "2914",
-      "2963",
-      "339",
-      "3714",
-      "3748",
-      "4505",
-      "4541",
-      "614",
-      "623",
-      "686",
-      "6863",
-      "7770",
-      "836",
-      "8592",
-      "8622",
-      "8726",
-      "9033"
-    ]
-  }
-]
+  { name: "2026mdpas" },
+  { name: "2026mdsev" },
+  { name: "2025mdpas" }
+];
 
 function createOption(v,str) {
   let option = document.createElement('option');
@@ -99,34 +24,33 @@ function updateCompList() {
   }
 }
 
-function updateTeamList() {
+async function updateTeamList() {
   const team = document.getElementById("team");
+  const compCode = document.getElementById("comp").value;
+  const matchNum = document.getElementById("match").value || 1;
+
   team.innerHTML = "";
+  team.appendChild(createOption("", "N/A"));
 
-  let teamList = [];
+  if (!compCode || !matchNum) return;
 
-  for(const c of compList) {
-    if(c.name == getV("comp")) {
-      teamList = c.teams;
-    }
-  }
+  try {
+    const matchKey = `${compCode}_qm${matchNum}`;
+    
+    const response = await fetch(`https://www.thebluealliance.com/api/v3/match/${matchKey}`, {
+      headers: { 'X-TBA-Auth-Key': key }
+    });
+    
+    const data = await response.json();
 
-  // sort the list for clarity
-  for(let i = 0; i < teamList.length; i++) { 
-    teamList[i] == parseInt(teamList[i]);
-  }
+    const red = data.alliances.red.team_keys.map(t => t.replace('frc', ''));
+    const blue = data.alliances.blue.team_keys.map(t => t.replace('frc', ''));
 
-  teamList.sort((a,b) => a-b);
+    red.forEach((t, i) => team.appendChild(createOption(t, `Red ${i + 1}: ${t}`)));
+    blue.forEach((t, i) => team.appendChild(createOption(t, `Blue ${i + 1}: ${t}`)));
 
-  // add items to dropdown
-  team.appendChild(createOption("","N/A"));
-
-  if(teamList.length == 0) {
-    return;
-  }
-
-  for(const t of teamList) {
-    team.appendChild(createOption(t,t));
+  } catch (e) {
+    console.error("Error fetching from TBA:", e);
   }
 }
 
