@@ -35,7 +35,7 @@ async function updateTeamList() {
   if (!compCode || !matchNum) return;
 
   try {
-    const matchKey = `${compCode}_qm${matchNum}`;
+    const matchKey = `${compCode}_${matchNum}`;
     
     const response = await fetch(`https://www.thebluealliance.com/api/v3/match/${matchKey}`, {
       headers: { 'X-TBA-Auth-Key': key }
