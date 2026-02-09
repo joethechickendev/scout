@@ -24,7 +24,8 @@
         <div id="header" class="area">
           <div class="statBox">
             <h2 style="margin: 0px;">Team</h2>
-            <select id="team"></select>
+            <input list="team-options" id="team" type="text" placeholder="Team #" class="baseInput" onchange="updateTeamList()">
+            <datalist id="team-options"></datalist>
           </div>
           <div class="statBox" title="Found in the url of the competition link at www.thebluealliance/...">
             <h2 style="margin: 0px;">Comp. ID</h2>

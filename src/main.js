@@ -26,11 +26,11 @@ function updateCompList() {
 
 async function updateTeamList() {
   const team = document.getElementById("team");
+  const teamList = document.getElementById("team-options");
   const compCode = document.getElementById("comp").value;
   const matchNum = document.getElementById("match").value || 1;
 
-  team.innerHTML = "";
-  team.appendChild(createOption("", "N/A"));
+  teamList.innerHTML = "";
 
   if (!compCode || !matchNum) return;
 
@@ -46,11 +46,12 @@ async function updateTeamList() {
     const red = data.alliances.red.team_keys.map(t => t.replace('frc', ''));
     const blue = data.alliances.blue.team_keys.map(t => t.replace('frc', ''));
 
-    red.forEach((t, i) => team.appendChild(createOption(t, `Red ${i + 1}: ${t}`)));
-    blue.forEach((t, i) => team.appendChild(createOption(t, `Blue ${i + 1}: ${t}`)));
+    red.forEach((t, i) => teamList.appendChild(createOption(t, `Red ${i + 1}`)));
+    blue.forEach((t, i) => teamList.appendChild(createOption(t, `Blue ${i + 1}`)));
 
   } catch (e) {
     console.error("Error fetching from TBA:", e);
+    teamList.appendChild(createOption("Fetch error", "Check your internet to enable autofill"));
   }
 }
 
@@ -221,7 +222,7 @@ function setV(item,v) {
 
 function clear() {
     setV("team","");
-    setV("match","");
+    setV("match",(isNaN(getV("match")) ? getV("match") : parseInt(getV("match")) + 1));
     setV("fuelAuto","");
     setV("depotAuto","");
     setV("climbAuto",0),
@@ -229,6 +230,8 @@ function clear() {
     setV("depotTele","");
     setV("climbTele",0);
     setV("notes","");
+    
+    updateTeamList();
 }
 
 // add or remove from a number value

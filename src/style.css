@@ -179,3 +179,22 @@ select {
   padding-left: min(1vw, 1vh);
   padding-right: min(1vw, 1vh);
 }
+
+input::-webkit-calendar-picker-indicator {
+    display: none !important;
+    opacity: 0;
+}
+
+input[list]::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+input::-webkit-list-button {
+    display: none !important;
+}
+
+input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
