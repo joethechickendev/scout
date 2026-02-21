@@ -24,12 +24,13 @@
         <div id="header" class="area">
           <div class="statBox">
             <h2 style="margin: 0px;">Team</h2>
-            <input list="team-options" id="team" type="text" placeholder="Team #" class="baseInput" onchange="updateTeamList()">
+            <input list="team-options" id="team" type="text" placeholder="Team #" class="baseInput" onchange="updateTeamList()" autocomplete="team">
             <datalist id="team-options"></datalist>
           </div>
           <div class="statBox" title="Found in the url of the competition link at www.thebluealliance/...">
             <h2 style="margin: 0px;">Comp. ID</h2>
-            <select id="comp" onchange="updateTeamList()"></select>
+            <input list="comp-options" id="comp" type="text" placeholder="N/A" class="baseInput" onchange="updateTeamList()" autocomplete="comp">
+            <datalist id="comp-options"></datalist>
           </div>
           <div class="statBox">
             <h2 style="margin: 0px;">Match</h2>
@@ -49,7 +50,7 @@
             </div>
           </div>
           <div class="statBox">
-            <h2>Depot Fuel</h1>
+            <h2>Outpost Fuel</h1>
             <div class="input">
               <button onclick="ibutton(-1,`depotAuto`)">-</button>
               <input id="depotAuto" placeholder="0" type="number" class="numberBox">
@@ -79,7 +80,7 @@
             </div>
           </div>
           <div class="statBox">
-            <h2>Depot Fuel</h1>
+            <h2>Outpost Fuel</h1>
             <div class="input">
               <button onclick="ibutton(-1,`depotTele`)">-</button>
               <input id="depotTele" placeholder="0" type="number" class="numberBox">

@@ -1,11 +1,5 @@
 const key = atob("b1pETkE4YjVpNjVwYVhpRHBmOHNhaFpJWU53OWx3TksxVjFrQ1k0MURQR05PNHJoaVVHMURHMXhRbVJsM3o2QQk=");
 
-const compList = [
-  { name: "2026mdpas" },
-  { name: "2026mdsev" },
-  { name: "2025mdpas" }
-];
-
 function createOption(v,str) {
   let option = document.createElement('option');
   option.value = v;
@@ -14,13 +8,28 @@ function createOption(v,str) {
   return option;
 }
 
-function updateCompList() {
-  const comp = document.getElementById("comp");
+async function updateCompList() {
+  const comp = document.getElementById("comp-options");
   comp.innerHTML = "";
 
+  let thisCompList = [];
+
+  try {    
+    const year = new Date().getFullYear();
+    const response = await fetch(`https://www.thebluealliance.com/api/v3/team/frc1418/events/${year}/keys?X-TBA-Auth-Key=${key}`);
+    
+    const data = await response.json();
+    console.log("events:",data);
+
+    thisCompList = data;
+  } catch (e) {
+    console.error("Error fetching from TBA:", e);
+    comp.appendChild(createOption("Fetch error", "Check your internet to enable autofill"));
+  }
+
   comp.appendChild(createOption("","N/A"));
-  for(const c of compList) {
-    comp.appendChild(createOption(c.name,c.name));
+  for(const c of thisCompList) {
+      comp.appendChild(createOption(c,c));
   }
 }
 
@@ -28,7 +37,8 @@ async function updateTeamList() {
   const team = document.getElementById("team");
   const teamList = document.getElementById("team-options");
   const compCode = document.getElementById("comp").value;
-  const matchNum = document.getElementById("match").value || 1;
+  const mValue = document.getElementById("match").value;
+  const matchNum = mValue ? (parseInt(mValue).toString() == mValue ? `qm${mValue}` : mValue) : 'qm1';
 
   teamList.innerHTML = "";
 
@@ -37,9 +47,7 @@ async function updateTeamList() {
   try {
     const matchKey = `${compCode}_${matchNum}`;
     
-    const response = await fetch(`https://www.thebluealliance.com/api/v3/match/${matchKey}`, {
-      headers: { 'X-TBA-Auth-Key': key }
-    });
+    const response = await fetch(`https://www.thebluealliance.com/api/v3/match/${matchKey}?X-TBA-Auth-Key=${key}`);
     
     const data = await response.json();
 
