@@ -1,3 +1,5 @@
+/* run as module */
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -9,8 +11,8 @@ const __dirname = path.dirname(__filename);
 
 const images = [
   path.join(__dirname, '../images/icon-16x16.png'),
-  path.join(__dirname, '../images/icon-32x32.png'),
-  path.join(__dirname, '../images/icon-48x48.png'),
+  //path.join(__dirname, '../images/icon-32x32.png'),
+  //path.join(__dirname, '../images/icon-48x48.png'),
   path.join(__dirname, '../images/icon-256x256.png'),
 ];
 
@@ -38,8 +40,8 @@ pngToIco(images)
     await gen(
       [
         { size: AssetSize.S16, path: path.join(__dirname, '../images/icon-16x16.png') },
-        { size: AssetSize.S32, path: path.join(__dirname, '../images/icon-32x32.png') },
-        { size: AssetSize.S64, path: path.join(__dirname, '../images/icon-48x48.png') },
+        //{ size: AssetSize.S32, path: path.join(__dirname, '../images/icon-32x32.png') },
+        //{ size: AssetSize.S64, path: path.join(__dirname, '../images/icon-48x48.png') },
         { size: AssetSize.S256, path: path.join(__dirname, '../images/icon-256x256.png') },
       ],
       path.join(__dirname, '../images/icon.icns')
