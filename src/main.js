@@ -147,7 +147,6 @@ function download() {
 
     document.getElementById("download").disabled = false;
     
-    reload();
   } catch {
     document.getElementById("download").disabled = false;
     console.error("Couldn't download file");
